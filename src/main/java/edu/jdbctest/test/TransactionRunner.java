@@ -1,8 +1,8 @@
 package edu.jdbctest.test;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class TransactionRunner {
     public static void main(String[] args) throws SQLException {
@@ -14,28 +14,16 @@ public class TransactionRunner {
                DELETE FROM ticket WHERE flight_id = ?
                 """;
                 Connection connection = null;
-                PreparedStatement deleteFlightStatement = null;
-                PreparedStatement deleteTicketsStatement = null;
+                Statement statement = null;
         try {
             connection = ConnectionManager.open();
-            
-            deleteFlightStatement = connection.prepareStatement(deleteFlightSql);
-            deleteTicketsStatement = connection.prepareStatement(deleteTicketsSql);
-
+            statement = connection.createStatement();
+            statement.addBatch(deleteTicketsSql);
+        
             connection.setAutoCommit(false);
 
-            deleteFlightStatement.setLong(1, flightId);
-            deleteTicketsStatement.setLong(1, flightId);
 
-            int executeUpdate2 = deleteTicketsStatement.executeUpdate();
 
-            if (true) {
-                throw new RuntimeException("Oooops");
-            }
-            int executeUpdate = deleteFlightStatement.executeUpdate();
-
-            System.out.println(executeUpdate);
-            System.out.println(executeUpdate2);
             connection.commit();
         } catch (Exception e) {
             if (connection != null) {
@@ -44,8 +32,6 @@ public class TransactionRunner {
             throw e;
         } finally {
             if (connection != null) connection.close();
-            if (deleteFlightStatement != null) deleteFlightStatement.close();
-            if (deleteTicketsStatement != null) deleteTicketsStatement.close();
         }
     }
 }
