@@ -44,7 +44,7 @@ public class App {
         }
     }
 
-    private static List<Long> getFlightsBeteen(LocalDateTime start, LocalDateTime end) throws SQLException {
+    public static List<Long> getFlightsBeteen(LocalDateTime start, LocalDateTime end) throws SQLException {
         List<Long> result = new ArrayList<>();
         String sql = """
                 Select id
@@ -64,7 +64,6 @@ public class App {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 result.add(resultSet.getLong("id"));
-
             }
         }
         return result;
