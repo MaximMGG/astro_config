@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,12 +40,17 @@ public class App {
                             System.out.println(tables.getString("TABLE_NAME"));
                         }
                     }
+                    System.out.println("----");
+                    ResultSet column = metaData.getColumns(catalog, schema, "ticket", "%");
+                    while (column.next()) {
+                        System.out.println(column.getString("COLUMN_NAME"));
+                    }
                 }
             }
         }
     }
 
-    public static List<Long> getFlightsBeteen(LocalDateTime start, LocalDateTime end) throws SQLException {
+    private static List<Long> getFlightsBeteen(LocalDateTime start, LocalDateTime end) throws SQLException {
         List<Long> result = new ArrayList<>();
         String sql = """
                 Select id
@@ -83,6 +89,15 @@ public class App {
             while (reslutSet.next()) {
                 result.add(reslutSet.getObject("id", Long.class));
             }
+        }
+        return result;
+    }
+
+    public List<?> testParam(int parametr) throws SQLException {
+        List<Long> result = null;
+        switch(parametr) {
+            case 1 -> result = getFlightsBeteen(LocalDate.of(2020, 10, 1).atStartOfDay(), LocalDateTime.now());
+            case 2 -> result = getTicketsByFlightId(8L);
         }
         return result;
     }

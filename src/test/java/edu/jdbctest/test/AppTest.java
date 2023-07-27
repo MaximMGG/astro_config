@@ -3,17 +3,28 @@ package edu.jdbctest.test;
 import static org.junit.Assert.*;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
  * Unit test for simple App.
  */
 public class AppTest {
+    private App app;
+    @Before
+    public void initialize() {
+        app = new App();
+    }
+
+    /**
+     * @param parametr
+     * parametr can't be 0
+     * if 1 -> getFlightBetween
+     * if 2 -> getTicketByFlight
+     */
 
     @Test
     public void getFlightsBeteenSuccess() {
@@ -21,11 +32,22 @@ public class AppTest {
         List<Long> testResult = null;
         result.add(9L);
         try {
-            testResult = App.getFlightsBeteen(LocalDate.of(2020, 10, 1).atStartOfDay(), LocalDateTime.now());
+            testResult = (List<Long>) app.testParam(1);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         assertEquals(result.get(0), testResult.get(0));
+        assertEquals(result.size(), testResult.size());
+    }
+    @Test
+    public void getTicketsByFlightIdSuccess() {
+        List<Long> result = List.of(1L,1L,1L,1L,1L,1L );
+        List<Long> testResult = null;
+        try {
+            testResult = (List<Long>) app.testParam(2);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         assertEquals(result.size(), testResult.size());
     }
 
