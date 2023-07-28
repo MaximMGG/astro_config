@@ -24,8 +24,8 @@ public class BlobRunner {
             from aircraft 
             where id = ?
             """;
-            try (Connection open = ConnectionManager.open();
-            PreparedStatement prStatement = open.prepareStatement(sql)) {
+            try (Connection connection = ConnectionManager.get();
+            PreparedStatement prStatement = connection.prepareStatement(sql)) {
                 prStatement.setInt(1, 1);
                 ResultSet executeQuery = prStatement.executeQuery();
                 if (executeQuery.next()) {
@@ -42,7 +42,7 @@ public class BlobRunner {
                 set image = ?
                 where id = 1
             """;
-        try (Connection connection = ConnectionManager.open();
+        try (Connection connection = ConnectionManager.get();
                 PreparedStatement prStatement = connection.prepareStatement(sql)) {
             prStatement.setBytes(1, Files.readAllBytes(Path.of("resources", "boing777.jpg")));
             prStatement.executeUpdate();

@@ -22,11 +22,15 @@ public class JdbcRunner {
         // System.out.println(ticketsByFlightId);
         // System.out.println(getFlightsBeteen(LocalDate.of(2020, 10, 1).atStartOfDay(),
         // LocalDateTime.now()));
+        try {
         checkMetaDate();
+        } finally {
+            ConnectionManager.closePool();
+        }
     }
 
     private static void checkMetaDate() throws SQLException {
-        try (Connection connection = ConnectionManager.open()) {
+        try (Connection connection = ConnectionManager.get()) {
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet catalogs = metaData.getCatalogs();
             while (catalogs.next()) {
@@ -57,7 +61,7 @@ public class JdbcRunner {
                 from flight
                 where departure_date between ? and ?
                     """;
-        try (Connection connection = ConnectionManager.open();
+        try (Connection connection = ConnectionManager.get();
                 PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setFetchSize(50);
             preparedStatement.setQueryTimeout(10);
@@ -82,7 +86,7 @@ public class JdbcRunner {
                 where flight_id = ?
                  """;
         List<Long> result = new ArrayList<>();
-        try (Connection connection = ConnectionManager.open();
+        try (Connection connection = ConnectionManager.get();
                 PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setLong(1, flightId);
             ResultSet reslutSet = preparedStatement.executeQuery();
