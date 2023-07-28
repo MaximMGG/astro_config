@@ -6,9 +6,7 @@ import java.util.Properties;
 public class PropertiesUtil {
     private static final Properties PROPERTIES = new Properties();
 
-    private PropertiesUtil() {
-
-    }
+    private PropertiesUtil() {}
 
     static {
         loadProperties();

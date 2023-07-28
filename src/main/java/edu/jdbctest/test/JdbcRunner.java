@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  * Hello world!
  *
  */
-public class App {
+public class JdbcRunner {
     public static void main(String[] args) throws SQLException {
         // Long flightId = 2L;
         // List<Long> ticketsByFlightId = getTicketsByFlightId(flightId);
@@ -38,6 +39,11 @@ public class App {
                         while (tables.next()) {
                             System.out.println(tables.getString("TABLE_NAME"));
                         }
+                    }
+                    System.out.println("----");
+                    ResultSet column = metaData.getColumns(catalog, schema, "ticket", "%");
+                    while (column.next()) {
+                        System.out.println(column.getString("COLUMN_NAME"));
                     }
                 }
             }
@@ -64,7 +70,6 @@ public class App {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 result.add(resultSet.getLong("id"));
-
             }
         }
         return result;
@@ -87,6 +92,14 @@ public class App {
         }
         return result;
     } 
+    public List<?> testParam(int parametr) throws SQLException {
+        List<Long> result = null;
+        switch(parametr) {
+            case 1 -> result = getFlightsBeteen(LocalDate.of(2020, 10, 1).atStartOfDay(), LocalDateTime.now());
+            case 2 -> result = getTicketsByFlightId(8L);
+        }
+        return result;
+    }
 }
 
 
