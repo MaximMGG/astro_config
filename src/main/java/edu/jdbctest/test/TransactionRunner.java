@@ -23,7 +23,6 @@ public class TransactionRunner {
             connection.setAutoCommit(false);
 
 
-
             connection.commit();
         } catch (Exception e) {
             if (connection != null) {
