@@ -1,6 +1,8 @@
 package edu.jdbctest.test;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
 
 import edu.jdbctest.test.dao.TicketEntityDao;
 import edu.jdbctest.test.entity.TicketEntity;
@@ -8,8 +10,17 @@ import edu.jdbctest.test.entity.TicketEntity;
 public class DaoRunner {
 
     public static void main(String[] args) {
+        List<TicketEntity> findAll = TicketEntityDao.getInstance().findAll();
+        System.out.println(findAll);
+    }
+
+    private static void updateTest() {
         TicketEntityDao ticketDao = TicketEntityDao.getInstance();
-        System.out.println(ticketDao.delete(57L));
+        Optional<TicketEntity> maybeTicket = ticketDao.findById(2L);
+        maybeTicket.ifPresent(ticket -> {
+                ticket.setCost(BigDecimal.valueOf(188.88));
+        ticketDao.update(ticket);
+        });
     }
 
     private static void getSave() {
