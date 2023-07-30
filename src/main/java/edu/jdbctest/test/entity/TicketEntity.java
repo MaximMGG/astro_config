@@ -7,16 +7,16 @@ public class TicketEntity {
     private String passengerNo;
     private Long id;
     private String passengerName;
-    private Long flightId;
+    private Flight flight;
     private String seatNo;
     private BigDecimal cost;
 
-    public TicketEntity(Long id, String passengerNo, String passengerName, Long flightId, String seatNo,
+    public TicketEntity(Long id, String passengerNo, String passengerName, Flight flight, String seatNo,
             BigDecimal cost) {
         this.id = id;
         this.passengerNo = passengerNo;
         this.passengerName = passengerName;
-        this.flightId = flightId;
+        this.flight = flight;
         this.seatNo = seatNo;
         this.cost = cost;
     }
@@ -47,12 +47,12 @@ public class TicketEntity {
         this.passengerName = passengerName;
     }
 
-    public Long getFlightId() {
-        return flightId;
+    public Flight getFlight() {
+        return flight;
     }
 
-    public void setFlightId(Long flightId) {
-        this.flightId = flightId;
+    public void setFlightId(Flight flight) {
+        this.flight = flight;
     }
 
     public String getSeatNo() {
@@ -75,7 +75,7 @@ public class TicketEntity {
     @Override
     public String toString() {
         return "TicketEntity [passengerNo=" + passengerNo + ", id=" + id + ", passengerName=" + passengerName
-            + ", flightId=" + flightId + ", seatNo=" + seatNo + ", cost=" + cost + "]";
+            + ", flight=" + flight + ", seatNo=" + seatNo + ", cost=" + cost + "]";
     }
 
 }

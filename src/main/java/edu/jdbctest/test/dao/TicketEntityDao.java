@@ -8,8 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import edu.jdbctest.test.ConnectionManager;
+import edu.jdbctest.test.dto.TicketFilter;
+import edu.jdbctest.test.entity.Flight;
 import edu.jdbctest.test.entity.TicketEntity;
 import edu.jdbctest.test.exception.DaoException;
 
@@ -18,7 +21,7 @@ public class TicketEntityDao {
     private TicketEntityDao() {}
 
     public static TicketEntityDao getInstance() {
-        return INSTANCE; 
+        return INSTANCE;
     }
 
     private static final TicketEntityDao INSTANCE = new TicketEntityDao();
@@ -28,20 +31,26 @@ public class TicketEntityDao {
                                 """;
     private static final String FIND_ALL_SQL = """
         select
-        id,
+        ticket.id,
         passenger_no,
         passenger_name,
         flight_id,
         seat_no,
-        cost
+        cost,
+        fl.status,
+        fl.aircraft_id,
+        fl.arrival_airport_code,
+        fl.arrival_date,
+        fl.departure_airport_code,
+        fl.departure_date,
+        fl.flight_no
         from ticket
+        JOIN flight fl ON ticket.flight_id = fl.id
         """;
-
     private static final String SAVE_SQL = """
             INSERT INTO ticket (passenger_no, passenger_name, flight_id, seat_no, cost)
             values (?, ?, ?, ?, ?);
         """;
-
     private static final String UPDATE_SQL = """
                 update ticket
                 set passenger_no = ?,
@@ -52,14 +61,51 @@ public class TicketEntityDao {
                 where id = ?
             """;
     private static final String FIND_BY_ID_SQL = FIND_ALL_SQL + """
-        where id = ?
+        where ticket.id = ?
         """;
+    
+    public List<TicketEntity> findAll(TicketFilter filter) {
+        List<Object> param = new ArrayList<>();
+        List<String> whereSql = new ArrayList<>();
+        if (filter.seatNo() != null) {
+            whereSql.add("seat_no LIKE ?");
+            param.add("%" + filter.seatNo() + "%");
+        }
+        if (filter.passengerName() != null) {
+            whereSql.add("passenger_name = ?");
+            param.add(filter.passengerName());
+        }
+        param.add(filter.limit());
+        param.add(filter.offset());
+
+        String where = whereSql.stream().collect(Collectors.joining(" AND " , " WHERE ", " LIMIT ? OFFSET ? "));
+
+        String sql = FIND_ALL_SQL + where;
+
+        try (Connection connection = ConnectionManager.get();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            System.out.println(preparedStatement);
+            for (int i = 0; i < param.size(); i++) {
+                    preparedStatement.setObject(i + 1, param.get(i));
+            }
+            ResultSet resultSet = preparedStatement.executeQuery();
+            List<TicketEntity> tickets = new ArrayList<>();
+            while (resultSet.next()) {
+                tickets.add(buildTicket(resultSet));
+            }
+            return tickets;
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+    }
+
+
+    
     public List<TicketEntity> findAll() {
         try (Connection connection = ConnectionManager.get();
         PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_SQL)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             List<TicketEntity> list = new ArrayList<>();
-            TicketEntity ticket = null;
             while (resultSet.next()) {
                list.add(buildTicket(resultSet));
             }
@@ -70,14 +116,23 @@ public class TicketEntityDao {
     }
 
     private TicketEntity buildTicket(ResultSet executeQuery) throws SQLException {
-                  TicketEntity ticket = new TicketEntity(executeQuery.getLong("id"),
+        Flight flight = new Flight(
+            executeQuery.getLong("flight_id"),
+            executeQuery.getString("flight_no"),
+            executeQuery.getTimestamp("departure_date").toLocalDateTime(),
+            executeQuery.getString("departure_airport_code"),
+            executeQuery.getTimestamp("arrival_date").toLocalDateTime(),
+            executeQuery.getString("arrival_airport_code"),
+            executeQuery.getInt("aircraft_id"),
+            executeQuery.getString("status")
+        );
+                  return new TicketEntity(executeQuery.getLong("id"),
                             executeQuery.getString("passenger_no"),
-                            executeQuery.getString("passenger_name"), 
-                            executeQuery.getLong("flight_id"),
+                            executeQuery.getString("passenger_name"),
+                            flight,
                             executeQuery.getString("seat_no"),
-                            executeQuery.getBigDecimal("cost") 
+                            executeQuery.getBigDecimal("cost")
                             );
-        return ticket;
     }
 
     public Optional<TicketEntity> findById(Long id) {
@@ -102,7 +157,7 @@ public class TicketEntityDao {
 
             preparedStatement.setString(1, ticket.getPassengerNo());
             preparedStatement.setString(2, ticket.getPassengerName());
-            preparedStatement.setLong(3, ticket.getFlightId());
+            preparedStatement.setLong(3, ticket.getFlight().id());
             preparedStatement.setString(4, ticket.getSeatNo());
             preparedStatement.setBigDecimal(5, ticket.getCost());
             preparedStatement.setLong(6, ticket.getId());
@@ -124,12 +179,11 @@ public class TicketEntityDao {
         }
     }
     public TicketEntity save(TicketEntity ticket) {
-
         try (Connection connection = ConnectionManager.get();
                 PreparedStatement preparedStatement = connection.prepareStatement(SAVE_SQL, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, ticket.getPassengerNo());
             preparedStatement.setString(2, ticket.getPassengerName());
-            preparedStatement.setLong(3, ticket.getFlightId());
+            preparedStatement.setLong(3, ticket.getFlight().id());
             preparedStatement.setString(4, ticket.getSeatNo());
             preparedStatement.setBigDecimal(5, ticket.getCost());
 
