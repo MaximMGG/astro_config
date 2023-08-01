@@ -16,13 +16,15 @@ import edu.jdbctest.test.entity.Flight;
 import edu.jdbctest.test.entity.TicketEntity;
 import edu.jdbctest.test.exception.DaoException;
 
-public class TicketEntityDao {
+public class TicketEntityDao implements Dao<Long, TicketEntity> {
 
     private TicketEntityDao() {}
 
     public static TicketEntityDao getInstance() {
         return INSTANCE;
     }
+
+    private static FlightEntityDao flightEntityDao = FlightEntityDao.getInstance();
 
     private static final TicketEntityDao INSTANCE = new TicketEntityDao();
     private static final String DELETE_SQL = """
@@ -129,7 +131,8 @@ public class TicketEntityDao {
                   return new TicketEntity(executeQuery.getLong("id"),
                             executeQuery.getString("passenger_no"),
                             executeQuery.getString("passenger_name"),
-                            flight,
+                            flightEntityDao.findById(executeQuery.getLong("flight_id"),
+                            executeQuery.getStatement().getConnection()).orElse(null),
                             executeQuery.getString("seat_no"),
                             executeQuery.getBigDecimal("cost")
                             );

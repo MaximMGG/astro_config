@@ -1,0 +1,11 @@
+edu\jdbctest\test\entity\Flight.class
+edu\jdbctest\test\util\PropertiesUtil.class
+edu\jdbctest\test\dao\TicketEntityDao.class
+edu\jdbctest\test\DaoRunner.class
+edu\jdbctest\test\exception\DaoException.class
+edu\jdbctest\test\entity\TicketEntity.class
+edu\jdbctest\test\TransactionRunner.class
+edu\jdbctest\test\ConnectionManager.class
+edu\jdbctest\test\dto\TicketFilter.class
+edu\jdbctest\test\BlobRunner.class
+edu\jdbctest\test\JdbcRunner.class

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: edu.jdbctest.test.AppTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.583 s - in edu.jdbctest.test.AppTest
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.064 s <<< FAILURE! - in edu.jdbctest.test.AppTest
+getFlightsBeteenSuccess(edu.jdbctest.test.AppTest)  Time elapsed: 0.022 s  <<< ERROR!
+java.lang.ExceptionInInitializerError
+	at edu.jdbctest.test.AppTest.getFlightsBeteenSuccess(AppTest.java:37)
+Caused by: java.lang.NullPointerException: inStream parameter is null
+	at edu.jdbctest.test.AppTest.getFlightsBeteenSuccess(AppTest.java:37)
+
+getTicketsByFlightIdSuccess(edu.jdbctest.test.AppTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class edu.jdbctest.test.ConnectionManager
+	at edu.jdbctest.test.AppTest.getTicketsByFlightIdSuccess(AppTest.java:49)
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
+	at edu.jdbctest.test.AppTest.getFlightsBeteenSuccess(AppTest.java:37)
+

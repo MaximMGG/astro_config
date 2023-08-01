@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="edu.jdbctest.test.AppTest" time="0.583" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="edu.jdbctest.test.AppTest" time="0.064" tests="2" errors="2" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="19"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1251"/>
-    <property name="java.class.path" value="C:\Users\123\Desktop\JAVA projects\demo\target\test-classes;C:\Users\123\Desktop\JAVA projects\demo\target\classes;C:\Users\123\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\123\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\123\.m2\repository\org\postgresql\postgresql\42.6.0\postgresql-42.6.0.jar;C:\Users\123\.m2\repository\org\checkerframework\checker-qual\3.31.0\checker-qual-3.31.0.jar;C:\Users\123\.m2\repository\com\ensarsarajcic\neovim\java\neovim-api\0.5.0\neovim-api-0.5.0.jar;C:\Users\123\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\123\.m2\repository\com\ensarsarajcic\neovim\java\core-rpc\0.5.0\core-rpc-0.5.0.jar;C:\Users\123\.m2\repository\org\msgpack\msgpack-core\0.9.1\msgpack-core-0.9.1.jar;C:\Users\123\.m2\repository\org\msgpack\jackson-dataformat-msgpack\0.9.1\jackson-dataformat-msgpack-0.9.1.jar;C:\Users\123\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.13.3\jackson-databind-2.13.3.jar;C:\Users\123\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.13.3\jackson-annotations-2.13.3.jar;C:\Users\123\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.13.3\jackson-core-2.13.3.jar;C:\Users\123\.m2\repository\com\ensarsarajcic\neovim\java\reactive-core-rpc\0.5.0\reactive-core-rpc-0.5.0.jar;C:\Users\123\.m2\repository\net\bytebuddy\byte-buddy\1.12.10\byte-buddy-1.12.10.jar;C:\Users\123\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;"/>
+    <property name="java.class.path" value="c:\Users\123\Desktop\JAVA projects\demo\target\test-classes;c:\Users\123\Desktop\JAVA projects\demo\target\classes;C:\Users\123\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\123\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\123\.m2\repository\org\postgresql\postgresql\42.6.0\postgresql-42.6.0.jar;C:\Users\123\.m2\repository\org\checkerframework\checker-qual\3.31.0\checker-qual-3.31.0.jar;C:\Users\123\.m2\repository\com\ensarsarajcic\neovim\java\neovim-api\0.5.0\neovim-api-0.5.0.jar;C:\Users\123\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\123\.m2\repository\com\ensarsarajcic\neovim\java\core-rpc\0.5.0\core-rpc-0.5.0.jar;C:\Users\123\.m2\repository\org\msgpack\msgpack-core\0.9.1\msgpack-core-0.9.1.jar;C:\Users\123\.m2\repository\org\msgpack\jackson-dataformat-msgpack\0.9.1\jackson-dataformat-msgpack-0.9.1.jar;C:\Users\123\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.13.3\jackson-databind-2.13.3.jar;C:\Users\123\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.13.3\jackson-annotations-2.13.3.jar;C:\Users\123\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.13.3\jackson-core-2.13.3.jar;C:\Users\123\.m2\repository\com\ensarsarajcic\neovim\java\reactive-core-rpc\0.5.0\reactive-core-rpc-0.5.0.jar;C:\Users\123\.m2\repository\net\bytebuddy\byte-buddy\1.12.10\byte-buddy-1.12.10.jar;C:\Users\123\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +15,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="RU"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-19\bin"/>
-    <property name="sun.java.command" value="C:\Users\123\AppData\Local\Temp\surefire3325961701602880858\surefirebooter16408759729330193830.jar C:\Users\123\AppData\Local\Temp\surefire3325961701602880858 2023-07-28T16-11-19_333-jvmRun1 surefire7092897441904321700tmp surefire_06422934181291630349tmp"/>
+    <property name="sun.java.command" value="C:\Users\123\AppData\Local\Temp\surefire11213924365176382260\surefirebooter14529895183934902228.jar C:\Users\123\AppData\Local\Temp\surefire11213924365176382260 2023-08-01T10-53-57_654-jvmRun1 surefire3395573834347178410tmp surefire_05437243756022179738tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\123\Desktop\JAVA projects\demo\target\test-classes;C:\Users\123\Desktop\JAVA projects\demo\target\classes;C:\Users\123\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\123\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\123\.m2\repository\org\postgresql\postgresql\42.6.0\postgresql-42.6.0.jar;C:\Users\123\.m2\repository\org\checkerframework\checker-qual\3.31.0\checker-qual-3.31.0.jar;C:\Users\123\.m2\repository\com\ensarsarajcic\neovim\java\neovim-api\0.5.0\neovim-api-0.5.0.jar;C:\Users\123\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\123\.m2\repository\com\ensarsarajcic\neovim\java\core-rpc\0.5.0\core-rpc-0.5.0.jar;C:\Users\123\.m2\repository\org\msgpack\msgpack-core\0.9.1\msgpack-core-0.9.1.jar;C:\Users\123\.m2\repository\org\msgpack\jackson-dataformat-msgpack\0.9.1\jackson-dataformat-msgpack-0.9.1.jar;C:\Users\123\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.13.3\jackson-databind-2.13.3.jar;C:\Users\123\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.13.3\jackson-annotations-2.13.3.jar;C:\Users\123\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.13.3\jackson-core-2.13.3.jar;C:\Users\123\.m2\repository\com\ensarsarajcic\neovim\java\reactive-core-rpc\0.5.0\reactive-core-rpc-0.5.0.jar;C:\Users\123\.m2\repository\net\bytebuddy\byte-buddy\1.12.10\byte-buddy-1.12.10.jar;C:\Users\123\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;"/>
+    <property name="surefire.test.class.path" value="c:\Users\123\Desktop\JAVA projects\demo\target\test-classes;c:\Users\123\Desktop\JAVA projects\demo\target\classes;C:\Users\123\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\123\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\123\.m2\repository\org\postgresql\postgresql\42.6.0\postgresql-42.6.0.jar;C:\Users\123\.m2\repository\org\checkerframework\checker-qual\3.31.0\checker-qual-3.31.0.jar;C:\Users\123\.m2\repository\com\ensarsarajcic\neovim\java\neovim-api\0.5.0\neovim-api-0.5.0.jar;C:\Users\123\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\123\.m2\repository\com\ensarsarajcic\neovim\java\core-rpc\0.5.0\core-rpc-0.5.0.jar;C:\Users\123\.m2\repository\org\msgpack\msgpack-core\0.9.1\msgpack-core-0.9.1.jar;C:\Users\123\.m2\repository\org\msgpack\jackson-dataformat-msgpack\0.9.1\jackson-dataformat-msgpack-0.9.1.jar;C:\Users\123\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.13.3\jackson-databind-2.13.3.jar;C:\Users\123\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.13.3\jackson-annotations-2.13.3.jar;C:\Users\123\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.13.3\jackson-core-2.13.3.jar;C:\Users\123\.m2\repository\com\ensarsarajcic\neovim\java\reactive-core-rpc\0.5.0\reactive-core-rpc-0.5.0.jar;C:\Users\123\.m2\repository\net\bytebuddy\byte-buddy\1.12.10\byte-buddy-1.12.10.jar;C:\Users\123\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\123"/>
     <property name="user.language" value="ru"/>
@@ -25,12 +25,12 @@
     <property name="java.version.date" value="2023-01-17"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-19"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="C:\Users\123\Desktop\JAVA projects\demo"/>
+    <property name="basedir" value="c:\Users\123\Desktop\JAVA projects\demo"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\123\AppData\Local\Temp\surefire3325961701602880858\surefirebooter16408759729330193830.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\123\AppData\Local\Temp\surefire11213924365176382260\surefirebooter14529895183934902228.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="19.0.2+7-44"/>
@@ -45,7 +45,7 @@
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\123\AppData\Local\Temp\"/>
     <property name="java.version" value="19.0.2"/>
-    <property name="user.dir" value="C:\Users\123\Desktop\JAVA projects\demo"/>
+    <property name="user.dir" value="c:\Users\123\Desktop\JAVA projects\demo"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
@@ -58,6 +58,18 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="63.0"/>
   </properties>
-  <testcase name="getFlightsBeteenSuccess" classname="edu.jdbctest.test.AppTest" time="0.457"/>
-  <testcase name="getTicketsByFlightIdSuccess" classname="edu.jdbctest.test.AppTest" time="0.082"/>
+  <testcase name="getFlightsBeteenSuccess" classname="edu.jdbctest.test.AppTest" time="0.022">
+    <error type="java.lang.ExceptionInInitializerError">java.lang.ExceptionInInitializerError
+	at edu.jdbctest.test.AppTest.getFlightsBeteenSuccess(AppTest.java:37)
+Caused by: java.lang.NullPointerException: inStream parameter is null
+	at edu.jdbctest.test.AppTest.getFlightsBeteenSuccess(AppTest.java:37)
+</error>
+  </testcase>
+  <testcase name="getTicketsByFlightIdSuccess" classname="edu.jdbctest.test.AppTest" time="0">
+    <error message="Could not initialize class edu.jdbctest.test.ConnectionManager" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Could not initialize class edu.jdbctest.test.ConnectionManager
+	at edu.jdbctest.test.AppTest.getTicketsByFlightIdSuccess(AppTest.java:49)
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
+	at edu.jdbctest.test.AppTest.getFlightsBeteenSuccess(AppTest.java:37)
+</error>
+  </testcase>
 </testsuite>

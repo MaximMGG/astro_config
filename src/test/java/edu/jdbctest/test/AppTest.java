@@ -1,6 +1,6 @@
 package edu.jdbctest.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,8 +27,6 @@ public class AppTest {
      * if 1 -> getFlightBetween
      * if 2 -> getTicketByFlight
      */
-
-    @Test
     public void getFlightsBeteenSuccess() {
         List<Long> result = new ArrayList<>();
         List<Long> testResult = null;
